@@ -1,4 +1,4 @@
-package br.com.bruno96dantas.hashlab_listing.dto;
+package br.com.bruno96dantas.hashlab_discount.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
