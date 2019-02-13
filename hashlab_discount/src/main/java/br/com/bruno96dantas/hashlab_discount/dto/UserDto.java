@@ -1,5 +1,6 @@
 package br.com.bruno96dantas.hashlab_discount.dto;
 
+import br.com.bruno96dantas.hashlab_discount.models.Discount;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,4 +18,6 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
+
+    private Discount discount;
 }

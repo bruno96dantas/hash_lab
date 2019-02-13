@@ -7,6 +7,7 @@ import br.com.bruno96dantas.hashlab_discount.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -31,6 +32,21 @@ public class UserService {
         userDto.setId(user.getId());
 
         return userDto;
+    }
+
+    @Transactional
+    public void update(UserDto dto) {
+
+        User user = userRepository.findById(dto.getId())
+                .orElseThrow(() -> new EntityNotFoundException(dto.getId() + "Not found!"));
+
+        user.setFirstName(dto.getFirstName());
+        user.setLastName(dto.getLastName());
+        user.setDateOfBirth(dto.getDateOfBirth());
+        user.setDiscount(dto.getDiscount());
+
+        userRepository.save(user);
+
     }
 
     public List<UserDto> selectAll() {

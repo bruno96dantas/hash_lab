@@ -42,6 +42,13 @@ public class ProductService {
                 .collect(toList());
     }
 
+    public ProductDto selectOne(Long productId) {
+
+        Product product = productRepository.findByOneId(productId);
+
+        return productConvert.unConvert(product);
+    }
+
     public void delete(Long productId) {
 
         productRepository.deleteById(productId);

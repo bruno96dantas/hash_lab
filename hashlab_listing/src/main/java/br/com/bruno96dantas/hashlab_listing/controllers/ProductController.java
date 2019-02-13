@@ -27,6 +27,12 @@ public class ProductController {
         return ResponseEntity.ok(productService.selectAll());
     }
 
+    @GetMapping("/{productId}")
+    public ResponseEntity selectOne(@PathVariable("productId") Long productId) {
+
+        return ResponseEntity.ok(productService.selectOne(productId));
+    }
+
     @DeleteMapping("/{productId}")
     public ResponseEntity delete(@PathVariable("productId") Long productId) {
 
