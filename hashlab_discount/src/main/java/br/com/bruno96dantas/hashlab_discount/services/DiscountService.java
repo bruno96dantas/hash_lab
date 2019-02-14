@@ -44,11 +44,11 @@ public class DiscountService {
         User user = userRepository.findByOneId(userId);
 
         /* fazer a requisição buscando o valor do produto */
-        ServiceInstance serviceInstance = loadBalancerClient.choose("HASHLAB_LISTING");
+        ServiceInstance serviceInstance = loadBalancerClient.choose("hashlab_listing");
 
         ResponseEntity<ProductDto> product =
                 restTemplate.exchange(
-                        "http://" + serviceInstance.getHost() + ":" + serviceInstance.getPort() + "/{productId}",
+                        "http://" + serviceInstance.getHost() + ":" + serviceInstance.getPort() + "/product/{productId}",
                         HttpMethod.GET,
                         null,
                         ProductDto.class,
